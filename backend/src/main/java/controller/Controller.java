@@ -25,12 +25,12 @@ public class Controller {
         return ResponseEntity.ok("Hello World Rest");
     }
 
-    @GetMapping("/api/client/{id}")
+    @GetMapping("/api/client/id/{id}")
     public ResponseEntity findByid(@PathVariable(name="id") int id){
         return ResponseEntity.ok(id);
     }
 
-    @PostMapping("/api/client/{mail}")
+    @GetMapping("/api/client/mail/{mail}")
     public ResponseEntity findClient(@PathVariable(name="mail") String mail){
         System.out.println(mail);
         Client client = new Client(mail);
