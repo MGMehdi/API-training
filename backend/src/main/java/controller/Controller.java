@@ -16,7 +16,7 @@ import objects.Client;
  * Controller
  */
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:3000")
 public class Controller {
     DataBaseHelper db = new DataBaseHelper();
     @GetMapping("/api/helloworld")

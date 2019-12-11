@@ -1,5 +1,5 @@
+import Axios from 'axios'
 import React, { Component } from 'react'
-import GetClient from './../services/GetClient.js'
 
 export class ViewClient extends Component {
 
@@ -7,36 +7,38 @@ export class ViewClient extends Component {
         super(props)
 
         this.state = {
-            client: []
+            client: null,
+            mail: "toto@toto",
+            name: ""
         }
     }
 
+    componentDidMount()
+    {
+        
+
+        Axios.get(`http://localhost:8080/api/client/mail/${this.state.mail}`)
+        .then((res) => {
+            console.log(res.data)
+            this.setState({client: res.data})
+            this.setState({name: res.data._name})
+        }).catch(err => console.log(err))
+    }
+
+   
     render() {
+        
         return (
             <div>
                 <h1>ViewClient</h1>
-                <button onClick={this.getClient}>CLICK</button>
-                {
-                    this.state.client.map(
-                        c =>
-                    <h2>{c.name}</h2>
-                    )
-                }
+        <h2>{this.state.name}</h2>
+       
 
             </div>
         )
     }
 
-    getClient = () => {
-        let mail = "tutu@tutu"
-        GetClient.getOneClient(mail).then(
-            response => {
-                this.state({
-                    client: response.data
-                })
-            }
-        )
-    }
+    
 }
 
 export default ViewClient

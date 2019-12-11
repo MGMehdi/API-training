@@ -11,10 +11,10 @@ import objects.Client;
 public class App {
     public static void main(String[] args) {
         DataBaseHelper db = new DataBaseHelper();
-        Client c1 = new Client("toto@toto0");
+        Client c1 = new Client("toto", "toto@toto");
         ArrayList<Client> clients = new ArrayList<>();
 
-        // db.AddClient(c1);
+        db.AddClient(c1);
 
         db.GetClient(c1);
         System.out.println(c1.get_id() + " " + c1.get_name() + " " + c1.get_mail());
