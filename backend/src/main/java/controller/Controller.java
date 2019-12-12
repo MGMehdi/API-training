@@ -14,9 +14,12 @@ import objects.Client;
 
 /**
  * Controller
+ * Les différentes méthodes sont appelé en fonction de la méthode d'envoie html et du lien
  */
-@RestController
-@CrossOrigin(origins = "http://localhost:3000")
+
+@RestController //Défini la classe comme controleur
+@CrossOrigin(origins = "http://localhost:3000") //Lie le backend au frontend via le lien du frontend
+
 public class Controller {
     DataBaseHelper db = new DataBaseHelper();
     @GetMapping("/api/helloworld")
@@ -26,7 +29,7 @@ public class Controller {
     }
 
     @GetMapping("/api/client/id/{id}")
-    public ResponseEntity findByid(@PathVariable(name="id") int id){
+    public ResponseEntity findByid(@PathVariable(name="id") int id){    //PathVariable = lien qui change
         return ResponseEntity.ok(id);
     }
 
@@ -39,7 +42,7 @@ public class Controller {
     }
 
     @GetMapping("/api/client/delete")
-    public ResponseEntity deleteClient(@RequestParam(name="mail") String mail) {
+    public ResponseEntity deleteClient(@RequestParam(name="mail") String mail) {    //RequestParam = paramètre envoyé mais pas visible dans le lien
         Client client = new Client(mail);
         db.GetClient(client);
         db.DeleteClient(client);

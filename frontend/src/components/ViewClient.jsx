@@ -15,9 +15,7 @@ export class ViewClient extends Component {
 
     componentDidMount()
     {
-        
-
-        Axios.get(`http://localhost:8080/api/client/mail/${this.state.mail}`)
+        Axios.get(`http://localhost:8080/api/client/mail/${this.state.mail}`)   //Axios fait la liaison du frontend au backend
         .then((res) => {
             console.log(res.data)
             this.setState({client: res.data})
